@@ -41,6 +41,9 @@ app.delete("/repositories/:id", (request, response) => {
   if (findRepositoryIndex > 0){
     repositories.splice(findRepositoryIndex, 1);
   }
+  else{
+    return response.status(400).json({ error: 'Repository does not exists. '})
+  }
 
   return response.status(204).send();
 
